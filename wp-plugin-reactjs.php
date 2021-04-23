@@ -1,34 +1,15 @@
 <?php
 /*
-Plugin Name: WordPress Plugin ReactJS
-Plugin URI: https://github.com/younes-dro/wp-plugin-reactjs
-Description: A WordPress Plugin starter for developers who want to use ReactJS in the development of WordPress Plugins.
-Version:1.0.0
-Author: Younes DRO
-Author URI: http:https://dro.123.fr/
+Plugin Name: React option dashboard
+Plugin URI: https://#
+Description: A WordPress plugin to add orders dashaboard
+Author URI: https://#
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:wp-plugin-reactjs
 Domain Path: /languages
 */
 
-/*  Copyright 2019 Younes DRO (email : younesdro at gmail.com)
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-*/
-
-// Make sure we don't expose any info if called directly
 if ( ! function_exists( 'add_action' ) ){
   exit;
 }
@@ -39,10 +20,10 @@ if ( ! function_exists( 'add_action' ) ){
 */
 add_action( 'admin_menu', 'dro_create_menu' );
 function dro_create_menu(){
-  add_options_page( 'WP Plugin Using ReactJS', 'WP Plugin React', 'manage_options', __FILE__,'dro_display_menu' );
+  add_options_page( 'WP Plugin Using ReactJS', 'Reportes', 'manage_options', __FILE__,'dro_display_menu' );
 }
 function dro_display_menu(){
-  echo '<div id="main"></div>';
+  echo '<div id="main-report"></div>';
 }
 
 /**
@@ -57,3 +38,20 @@ function dro_enqueue_script(){
     time(), // You can add the current datetime in production env.
     true );
 }
+
+
+
+function my_admin_menu() {
+        add_menu_page(
+            __( 'Reporte', 'my-textdomain' ),
+            __( 'Reporte', 'my-textdomain' ),
+            'manage_options',
+            'sample-page',
+            'dro_display_menu',
+            'dashicons-schedule',
+            3
+        );
+    }
+
+add_action( 'admin_menu', 'my_admin_menu' );
+
